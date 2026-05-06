@@ -5,7 +5,7 @@ const sequelize=require("../config/db")
 const {DataTypes}=require("sequelize");
 
 
-const imageTable=sequelize.define("image",{
+const Image=sequelize.define("Image",{
     id:{
         type:DataTypes.INTEGER,
         primaryKey:true,
@@ -18,16 +18,15 @@ const imageTable=sequelize.define("image",{
             model:"patients",
             key:"id"
 
-        }
+        },
+        onDelete:"CASCADE",
+        onUpdate:"CASCADE"
     },
     file_path:{
         type:DataTypes.STRING,
         allowNull:false
     },
-    upload_date: {
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW
-    }
+
 
 },{
     tableName:"images",
@@ -35,4 +34,4 @@ const imageTable=sequelize.define("image",{
     underscored:true
 });
 
-module.exports=imageTable
+module.exports=Image;

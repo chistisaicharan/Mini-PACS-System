@@ -3,7 +3,6 @@
 const app=require("./app")
 // import from db.js
 const sequelize=require("./config/db")
-
 require("dotenv").config()
 
 
