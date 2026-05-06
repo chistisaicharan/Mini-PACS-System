@@ -5,7 +5,7 @@ const sequelize=require("../config/db")
 const {DataTypes}=require("sequelize");
 
 
-const patientsTable=sequelize.define("patient",{
+const Patient=sequelize.define("Patient",{
     id:{
         type:DataTypes.INTEGER,
         autoIncrement:true,
@@ -20,7 +20,7 @@ const patientsTable=sequelize.define("patient",{
         allowNull:false
     },
     gender:{
-        type:DataTypes.ENUM("Male","Female","Others"),
+        type:DataTypes.ENUM("Male","Female","Other"),
         allowNull:false
     },
     contact:{
@@ -33,7 +33,9 @@ const patientsTable=sequelize.define("patient",{
         references:{
             model:"users",
             key:"id"
-        }
+        },
+        onDelete:"CASCADE",
+        onUpdate:"CASCADE"
     }
 },{
     tableName:"patients",
@@ -42,4 +44,4 @@ const patientsTable=sequelize.define("patient",{
 });
 
 
-module.exports=patientsTable
+module.exports=Patient;
