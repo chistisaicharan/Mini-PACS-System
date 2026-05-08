@@ -5,10 +5,16 @@ const app=require("./app")
 const sequelize=require("./config/db")
 require("dotenv").config()
 
+const routes=require("./routes/auth_route");
+
+app.use(routes);
+
 
 require("./models/usersTable")
 require("./models/patientsTable")
 require("./models/imageTables")
+
+require("./controllers/auth");
 
 const port=process.env.PORT
 
